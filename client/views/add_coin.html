@@ -1,0 +1,47 @@
+<div class="panel">
+  <a class="btn btn-primary" href="#/coinPurchase">Go Back</a>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add Coin</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+      <form ng-submit="addCoinPurchase()" ng-init="getcoinList() ">
+        <div class="form-group">
+          <label>Coin</label>
+          <!-- <select class="form-control" ng-model="coinPurchase.coinName" >
+            <option value="default">--Select Coin--</option>
+            <option ng-repeat="x in coinList" value="{{x}}">{{x.coin}}</option>
+          </select> -->
+          <select class="form-control" ng-model="coinPurchase" ng-options="x.coin for x in coinList">
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label>Coin Details</label>
+          <input type="text" class="form-control" ng-model="coinPurchase.coinName" placeholder="Coin">
+        </div>
+        <div class="form-group">
+          <label>Coin Purchase Price</label>
+          <input type="text" class="form-control" ng-model="coinPurchase.coinPurchasePrice" placeholder="Purchase Price">
+        </div>
+        <div class="form-group"> <!-- Date input -->
+          <label class="control-label" for="date">Coin Purchase Date</label>
+         <input class="form-control" ng-model="coinPurchase.coinPurchaseDate" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+        </div>
+        <div class="form-group">
+          <label>Coin Unit Purchase</label>
+          <input type="text" class="form-control" ng-model="coinPurchase.coinUnit" placeholder="Coin Unit">
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input type="text" class="form-control" ng-model="coinPurchase.image_url" placeholder="Image URL">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
