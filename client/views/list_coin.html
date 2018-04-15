@@ -1,3 +1,9 @@
+<div class="jumbotron">
+      <div class="container text-center">
+        <h1>My Portfolio</h1>      
+        <p>Ones Stop Place To Track Your All Crypto</p>
+      </div>
+</div>
 <div class="panel panel-default" ng-init="getCoinPurchaseList()">
   <div class="panel-heading">
     <h3 class="panel-title">My Portfolio</h3>
@@ -7,15 +13,15 @@
     	<div ng-repeat="coinPurchase in coinPurchaseList">
     		<div class="col-md-6">
     			<div class="col-md-6">
-    				<h4>{{coinPurchase.coinName}} ({{coinPurchase.coin}})</h4>
+    				<h4 class="form-control-static">{{coinPurchase.coinName}} ({{coinPurchase.coin}})</h4>
     				<p>Units : {{coinPurchase.coinUnit }}</p>
-            <p>Current Price : {{coinPurchase.coinCurrentPrice | number : 4}}</p>
-            <p>Purchase Price : {{coinPurchase.coinPurchasePrice | number : 4}}</p>
-            <p>Profit : {{(coinPurchase.coinUnit*(coinPurchase.coinCurrentPrice - coinPurchase.coinPurchasePrice)) | number : 4}} $</p>
+                    <p>Current Price : {{coinPurchase.coinCurrentPrice | number : 4}}</p>
+                    <p>Purchase Price : {{coinPurchase.coinPurchasePrice | number : 4}}</p>
+                    <p>Profit : {{((coinPurchase.coinUnit * coinPurchase.coinCurrentPrice) - coinPurchase.coinPurchasePrice) | number : 4}} $</p>
     				<a class="btn btn-primary" href="#/coinPurchase/details/{{coinPurchase._id}}">View Details</a>
     			</div>
-    			<div class="col-md-6">
-    				<img class="imgicon" src="{{coinPurchase.image_url}}">
+    			<div class="col-md-5">
+    				<img class="img-circle" src="{{coinPurchase.image_url}}">
     			</div>
     		</div>
     	</div>

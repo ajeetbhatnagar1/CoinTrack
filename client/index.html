@@ -1,26 +1,56 @@
 <html ng-app="myApp">
 <head>
+  <style>
+  .bg-1 { 
+       background-color: #1abc9c; /* Green */
+        color: #ffffff;
+    }
+    .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+    }
+    .bg-3 { 
+        background-color: #ffffff; /* White */
+        color: #555555;
+    }
+    /* Add a dark background color to the footer */
+   /* footer {
+        background-color: #2d2d30;
+        color: #f5f5f5;
+        padding: 32px;
+    }
+
+    footer a {
+        color: #f5f5f5;
+    }
+
+    footer a:hover {
+        color: #777;
+        text-decoration: none;
+    }*/
+  </style>
 	<title>Coin Track</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body class="bg-light">
-	<nav class="navbar navbar-default">
+  	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  	<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="container-fluid ">
+    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
           </button>
-          <a class="navbar-brand" href="#">Coin Track</a>
+          <a class="navbar-brand" href="#">Coin Track Portfolio</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#/coinPurchase/add">Add Purchase</a></li>
+            <li><a href="#/coinPurchase">View Portfolio</a></li>
+            <li><a href="#">Crypto List</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 
@@ -38,9 +68,37 @@
 	<script src="/bower_components/angular-route/angular-route.js"></script>
 	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-	<script src="/app.js"></script>
-	<script src="/controllers/coinController.js"></script>
-</body>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  	<script src="/app.js"></script>
+  	<script src="/controllers/coinController.js"></script>
+  </body>
+
+<footer class="text-center">
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <a class="up-arrow" onclick="topFunction()" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <p>WebSite Made By <a href="https://www.cointrack.com" data-toggle="tooltip" title="Visit Cointrack">www.cointrack.com</a></p> 
+</footer>
+
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>
+
 </html>

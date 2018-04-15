@@ -1,6 +1,3 @@
-<div class="panel">
-  <a class="btn btn-primary" href="#/coinPurchase">Go Back</a>
-</div>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Add Coin</h3>
@@ -29,7 +26,7 @@
         </div>
         <div class="form-group"> <!-- Date input -->
           <label class="control-label" for="date">Coin Purchase Date</label>
-         <input class="form-control" ng-model="coinPurchase.coinPurchaseDate" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+          <input class="form-control" ng-model="coinPurchase.coinPurchaseDate" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
         </div>
         <div class="form-group">
           <label>Coin Unit Purchase</label>
@@ -39,7 +36,8 @@
           <label>Image URL</label>
           <input type="text" class="form-control" ng-model="coinPurchase.image_url" placeholder="Image URL">
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+          <a class="btn btn-primary pull-right" href="#/coinPurchase">Go Back</a>
       </form>
     </div>
     </div>
