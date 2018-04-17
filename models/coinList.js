@@ -7,7 +7,8 @@ const coinListSchema = mongoose.Schema({
 		required: true
 	},
 	coinName:{
-		type: String
+		type: String,
+		required: true
 	},
 	image_url:{
 		type: String,
@@ -23,7 +24,7 @@ const CoinList = module.exports = mongoose.model('CoinList', coinListSchema);
 
 // Get CoinList
 module.exports.getCoinList = (callback, limit) => {
-	CoinList.find(callback).limit(limit);
+	CoinList.find(callback).limit(limit).select({ coin: 1, coinName: 1, image_url :1, _id:0 });
 }
 
 // Add CoinList

@@ -5,6 +5,10 @@ myApp.config(function($routeProvider){
 		controller:'CoinController',
 		templateUrl: 'views/login.html'
 	})
+	$routeProvider.when('/login', {
+		controller:'CoinController',
+		templateUrl: 'views/login.html'
+	})
 	.when('/coinPurchase', {
 		controller:'CoinController',
 		templateUrl: 'views/list_coin.html'

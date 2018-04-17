@@ -15,10 +15,13 @@
     			<div class="col-md-6">
     				<h4 class="form-control-static">{{coinPurchase.coinName}} ({{coinPurchase.coin}})</h4>
     				<p>Units : {{coinPurchase.coinUnit }}</p>
-                    <p>Current Price : {{coinPurchase.coinCurrentPrice | number : 4}}</p>
-                    <p>Purchase Price : {{coinPurchase.coinPurchasePrice | number : 4}}</p>
+                    <p>Current Price : {{coinPurchase.coinCurrentPrice | number : 4}} $</p>
+                    <p>Invested Amount :<a data-toggle="tooltip" data-placement="right" title="Purchase Date : {{coinPurchase.coinPurchaseDate}}"> {{coinPurchase.coinPurchasePrice | number : 4}} $</a></p>
+                    <p>Asset Value : {{(coinPurchase.coinUnit * coinPurchase.coinCurrentPrice) | number : 4}} $</p>
                     <p>Profit : {{((coinPurchase.coinUnit * coinPurchase.coinCurrentPrice) - coinPurchase.coinPurchasePrice) | number : 4}} $</p>
-    				<a class="btn btn-primary" href="#/coinPurchase/details/{{coinPurchase._id}}">View Details</a>
+
+                  <!--   <p>Holding Since : {{coinPurchase.coinPurchaseDate | date: 'dd/MM/yyyy'}}</p> -->
+    				<!-- <a class="btn btn-primary" href="#/coinPurchase/details/{{coinPurchase._id}}">View Details</a> -->
     			</div>
     			<div class="col-md-5">
     				<img class="img-circle" src="{{coinPurchase.image_url}}">
@@ -28,3 +31,10 @@
     </div>
   </div>
 </div>
+
+<style>
+p {
+   margin: 0px;
+   padding: 1px;
+}
+</style>

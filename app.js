@@ -3,16 +3,18 @@ const app = express();
 const https = require("https");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
 CoinPurchase = require('./models/coinPurchase');
 CoinList = require('./models/coinList');
+User = require('./models/user');
 
 
 // Connect to Mongoose
-mongoose.connect('mongodb://localhost/coinPurchase');
+mongoose.connect('mongodb://localhost/coinPurchaseDB');
 var db = mongoose.connection;
 
 app.get('/', (req, res) => {
@@ -33,7 +35,7 @@ app.get('/api/getPrice/:coinName', (req, res) => {
 	var optionsget = {
 	    host : 'api.coinmarketcap.com', 
 	    port : 443,
-	    path : '/v1/ticker/'+coin+'/', 
+	    path : '/v1/ticker/'+coin+'/',
 	    method : 'GET'
 	};
 	var reqGet = https.request(optionsget, function(res1) {
@@ -105,6 +107,31 @@ app.post('/api/coinList', (req, res) => {
 });
 
 
+// login api
+app.post('/api/user', (req, res) => {
+	var user = req.body;
+	User.addUser(user, (err, user) => {
+		if(err){
+			throw err;
+		}
+		return res.status(200).send();
+	});
+});
 
+// get user
+app.post('/api/login', (req, res) => {
+	var user = req.body;
+	User.getUser(user, (err, user) => {
+		if(err){
+			throw err;
+		}
+		if(user == null){
+			return res.status(401).send();
+		}
+		return res.status(200).send();
+	});
+});
+
+// Node Server 
 app.listen(3000);
 console.log('Running on port 3000...');

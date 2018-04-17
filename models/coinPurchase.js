@@ -10,12 +10,12 @@ const coinPurchaseSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	userId:{
+	/*userId:{
 		type: String
 	},
 	coinCurrentPrice:{
 		type: String,
-	},
+	},*/
 	coinPurchasePrice:{
 		type: String,
 		required: true
@@ -29,15 +29,16 @@ const coinPurchaseSchema = mongoose.Schema({
 		required: true
 	},	
 	image_url:{
-		type: String
+		type: String,
+		required: true
 	},
 	create_date:{
 		type: Date,
 		default: Date.now
 	}
-});
+},{ autoIndex: false});
 
-const CoinPurchase = module.exports = mongoose.model('CoinPurchase', coinPurchaseSchema);
+const CoinPurchase = module.exports = mongoose.model('CryptoCoinPurchase', coinPurchaseSchema);
 
 // Get CoinPurchase
 module.exports.getCoinPurchase = (callback, limit) => {

@@ -13,28 +13,27 @@
             <option ng-repeat="x in coinList" value="{{x}}">{{x.coin}}</option>
           </select> -->
           <select class="form-control" ng-model="coinPurchase" ng-options="x.coin for x in coinList">
-          </select>
-
+        </select>
+          <input type="hidden" type="text" class="form-control" ng-model="coinPurchase.coin">
         </div>
         <div class="form-group">
           <label>Coin Details</label>
-          <input type="text" class="form-control" ng-model="coinPurchase.coinName" placeholder="Coin">
+          <input type="text" class="form-control" ng-model="coinPurchase.coinName" placeholder="Coin" readonly>
         </div>
         <div class="form-group">
-          <label>Coin Purchase Price</label>
+          <label>Invested Amount</label>
           <input type="text" class="form-control" ng-model="coinPurchase.coinPurchasePrice" placeholder="Purchase Price">
         </div>
         <div class="form-group"> <!-- Date input -->
-          <label class="control-label" for="date">Coin Purchase Date</label>
+          <label class="control-label" for="date">Purchase Date</label>
           <input class="form-control" ng-model="coinPurchase.coinPurchaseDate" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
         </div>
         <div class="form-group">
-          <label>Coin Unit Purchase</label>
+          <label>Unit Purchased</label>
           <input type="text" class="form-control" ng-model="coinPurchase.coinUnit" placeholder="Coin Unit">
         </div>
         <div class="form-group">
-          <label>Image URL</label>
-          <input type="text" class="form-control" ng-model="coinPurchase.image_url" placeholder="Image URL">
+          <input type="hidden" type="text" class="form-control" ng-model="coinPurchase.image_url" placeholder="Image URL">
         </div>
           <button class="btn btn-primary" type="submit">Submit</button>
           <a class="btn btn-primary pull-right" href="#/coinPurchase">Go Back</a>
