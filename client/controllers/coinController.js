@@ -61,8 +61,7 @@ myApp.controller('CoinController', ['$scope', '$http', '$location', '$routeParam
 	// Admin Screen Functions
 	$scope.getcoinList = function(){
 		$http.get('/api/coinList/').success(function(response){
-			
-			$scope.coinList = response.coin;
+			$scope.coinList = response;
 		});
 	}
 

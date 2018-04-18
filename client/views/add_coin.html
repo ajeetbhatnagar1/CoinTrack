@@ -12,9 +12,9 @@
             <option value="default">--Select Coin--</option>
             <option ng-repeat="x in coinList" value="{{x}}">{{x.coin}}</option>
           </select> -->
-          <select class="form-control" ng-model="coinPurchase" ng-options="x.coin for x in coinList">
+        <select class="form-control" ng-model="coinPurchase" ng-options="x.coin for x in coinList">
         </select>
-          <input type="hidden" type="text" class="form-control" ng-model="coinPurchase.coin">
+         <!--  <input type="hidden" type="text" class="form-control" ng-model="coinPurchase.coin"> -->
         </div>
         <div class="form-group">
           <label>Coin Details</label>

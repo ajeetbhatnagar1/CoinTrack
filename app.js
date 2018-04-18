@@ -3,7 +3,6 @@ const app = express();
 const https = require("https");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const session = require('express-session');
 
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
@@ -14,7 +13,9 @@ User = require('./models/user');
 
 
 // Connect to Mongoose
-mongoose.connect('mongodb://localhost/coinPurchaseDB');
+//mongoose.connect('mongodb://localhost/coinPurchaseDB');
+//mongodb://<dbuser>:<dbpassword>@ds147459.mlab.com:47459/coinpurchasedb
+mongoose.connect('mongodb://admin:admin@ds147459.mlab.com:47459/coinpurchasedb');
 var db = mongoose.connection;
 
 app.get('/', (req, res) => {
