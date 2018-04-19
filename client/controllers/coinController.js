@@ -11,8 +11,10 @@ myApp.controller('CoinController', ['$scope', '$http', '$location', '$routeParam
 	}
 
 	$scope.getCoinPurchaseList = function(){
-		var coinlist = "";
-		$http.get('/api/coinPurchase').success(function(response){
+		$scope.user = localStorage.user;
+		console.log($scope.user);
+		$http.get('/api/coinPurchaseByUser/'+localStorage.user).success(function(response){
+			console.log(response);
 			$scope.coinPurchaseList = response;
 			for(var i=0;i<$scope.coinPurchaseList.length; i++){
 				 getCoinPrice(i);
@@ -20,28 +22,36 @@ myApp.controller('CoinController', ['$scope', '$http', '$location', '$routeParam
 		});
 	}
 
-	$scope.getcoinPurchase = function(){
+	$scope.getCoinPurchase = function(){
 		var id = $routeParams.id;
 		$http.get('/api/coinPurchase/'+id).success(function(response){
 			$scope.coinPurchase = response;
 		});
 	}
 
+	$scope.getCoinPurchaseByUser = function(){
+		$http.post('/api/coinPurchaseByUser/', $scope.user).success(function(response){
+			$scope.coinPurchase = response;
+		});
+	}
+	
+
 	$scope.addCoinPurchase = function(){
+		$scope.coinPurchase.user = localStorage.user;
 		console.log($scope.coinPurchase);
 		$http.post('/api/coinPurchase/', $scope.coinPurchase).success(function(response){
 			window.location.href='#/coinPurchase';
 		});
 	}
 
-	$scope.updateProfile = function(){
+	$scope.updatePurchase = function(){
 		var id = $routeParams.id;
 		$http.put('/api/coinPurchase/'+id, $scope.coinPurchase).success(function(response){
 			window.location.href='#/coinPurchase';
 		});
 	}
 
-	$scope.removeProfile = function(id){
+	$scope.removePurchase = function(id){
 		$http.delete('/api/coinPurchase/'+id).success(function(response){
 			window.location.href='#/coinPurchase';
 		});
@@ -85,8 +95,15 @@ myApp.controller('CoinController', ['$scope', '$http', '$location', '$routeParam
 			if($scope.user.username == 'admin' && $scope.user.password == "admin"){
 				window.location.href='#/admin';
 			} else {
+				localStorage.setItem('user', $scope.user.username);
 				window.location.href='#/coinPurchase';
 			}
 		});
+	}
+
+	$scope.logout = function(){
+		window.localStorage.removeItem('user');
+		window.localStorage.clear();
+		window.location.href='#/login';
 	}
 }]);

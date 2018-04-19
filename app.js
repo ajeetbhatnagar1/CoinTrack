@@ -57,6 +57,16 @@ app.get('/api/coinPurchase/:_id', (req, res) => {
 	});
 });
 
+app.get('/api/coinPurchaseByUser/:user', (req, res) => {
+	CoinPurchase.getCoinPurchaseByUser(req.params.user, (err, coinPurchase) => {
+		if(err){
+			throw err;
+		}
+		res.json(coinPurchase);
+	});
+});
+
+
 app.post('/api/coinPurchase', (req, res) => {
 	var coinPurchase = req.body;
 	CoinPurchase.addCoinPurchase(coinPurchase, (err, coinPurchase) => {
@@ -69,7 +79,6 @@ app.post('/api/coinPurchase', (req, res) => {
 
 app.put('/api/coinPurchase/:_id', (req, res) => {
 	var id = req.params._id;
-	var coinPurchase = req.body;
 	CoinPurchase.updateCoinPurchase(id, coinPurchase, {}, (err, coinPurchase) => {
 		if(err){
 			throw err;
@@ -133,6 +142,9 @@ app.post('/api/login', (req, res) => {
 	});
 });
 
+// Set Port
+app.set('port', (process.env.PORT || 3000));
 // Node Server 
-app.listen(3000);
-console.log('Running on port 3000...');
+app.listen(app.get('port'), function(){
+	console.log('Server started on port '+app.get('port'));
+});

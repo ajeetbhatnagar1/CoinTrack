@@ -10,12 +10,10 @@ const coinPurchaseSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	/*userId:{
-		type: String
-	},
-	coinCurrentPrice:{
+	user:{
 		type: String,
-	},*/
+		required: true
+	},
 	coinPurchasePrice:{
 		type: String,
 		required: true
@@ -46,8 +44,13 @@ module.exports.getCoinPurchase = (callback, limit) => {
 }
 
 // Get CoinPurchase by User Id
-module.exports.getCoinPurchaseByUserId = (id, callback) => {
+module.exports.getCoinPurchaseById = (id, callback) => {
 	CoinPurchase.findById(id, callback);
+}
+
+
+module.exports.getCoinPurchaseByUser = (user, callback) => {
+	CoinPurchase.find({user : user}, callback);
 }
 
 // Add CoinPurchase
@@ -56,17 +59,15 @@ module.exports.addCoinPurchase = (coinPurchase, callback) => {
 }
 
 // Update Customer
-module.exports.updateCustomer = (id, coinPurchase, options, callback) => {
+module.exports.updateCoinPurchase = (id, coinPurchase, options, callback) => {
 	var query = {_id: id};
 	var update = {
-		/*salutation: customer.salutation,
-		firstName: customer.firstName,
-		secondName: customer.secondName,
-		nricfin: customer.nricfin,
-		contactNumber: customer.contactNumber,
-		emailAddress: customer.emailAddress,
-		nationality: customer.nationality,
-		image_url: customer.image_url*/
+		coin: coinPurchase.coin,
+		coinName: coinPurchase.coinName,
+		coinPurchasePrice: coinPurchase.coinPurchasePrice,
+		coinPurchaseDate: coinPurchase.coinPurchaseDate,
+		coinUnit: coinPurchase.coinUnit,
+		image_url: coinPurchase.image_url
 	}
 	CoinPurchase.findOneAndUpdate(query, update, options, callback);
 }

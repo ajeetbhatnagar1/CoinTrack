@@ -61,8 +61,9 @@
                   </div>
                   <div class="form-group">
                     <div class="row">
-                      <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                      <div class="col-sm-6 col-sm-offset-3"><!-- 
+                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now"> -->
+                        <a tabindex="4" class="form-control btn btn-register" href="#/login">Register Now</a>
                       </div>
                     </div>
                   </div>
@@ -178,7 +179,7 @@
 
   <script type="text/javascript">
     $(function() {
-
+    localStorage.removeItem('user');
     $('#login-form-link').click(function(e) {
     $("#login-form").delay(100).fadeIn(100);
     $("#register-form").fadeOut(100);

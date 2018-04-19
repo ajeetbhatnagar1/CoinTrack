@@ -1,7 +1,8 @@
 <div class="jumbotron">
       <div class="container text-center">
-        <h1>My Portfolio</h1>      
-        <p>Ones Stop Place To Track Your All Crypto</p>
+        <h1>{{user}}'s Portfolio</h1>    '   
+        <p>One Stop Place To Track All Your Crypto's</p>
+        <!-- <h3>{{user}} your total crypto value : {{totalValue}}</h1>  -->
       </div>
 </div>
 <div class="panel panel-default" ng-init="getCoinPurchaseList()">
@@ -21,9 +22,11 @@
                     <p>Profit : {{((coinPurchase.coinUnit * coinPurchase.coinCurrentPrice) - coinPurchase.coinPurchasePrice) | number : 4}} $</p>
 
                   <!--   <p>Holding Since : {{coinPurchase.coinPurchaseDate | date: 'dd/MM/yyyy'}}</p> -->
-    				<!-- <a class="btn btn-primary" href="#/coinPurchase/details/{{coinPurchase._id}}">View Details</a> -->
+    				<div class="pull-left">
+               <a href="#/coinPurchase/edit/{{coinPurchase._id}}">Edit</a> |  <a href="#" ng-click="removePurchase(coinPurchase._id)">Delete</a>
+            </div>
     			</div>
-    			<div class="col-md-5">
+    			<div class="col-md-4">
     				<img class="img-circle" src="{{coinPurchase.image_url}}">
     			</div>
     		</div>
@@ -38,3 +41,7 @@ p {
    padding: 1px;
 }
 </style>
+
+<script type="text/javascript">
+ var $user = localStorage.user;
+</script>
